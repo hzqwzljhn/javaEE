@@ -10,8 +10,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-   <error-page>
-		<error-code>404</error-code>
-		<location>/error.jsp</location>
-	</error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+  <servlet>
+    <description></description>
+    <display-name>Userservlet</display-name>
+    <servlet-name>Userservlet</servlet-name>
+    <servlet-class>cn.edu.zucc.ems.servlet.Userservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Userservlet</servlet-name>
+    <url-pattern>/Userservlet</url-pattern>
+  </servlet-mapping>
 </web-app>

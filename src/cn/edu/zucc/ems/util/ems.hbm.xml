@@ -16,4 +16,23 @@
 			<column name="flag" />
 		</property>
 	</class>
+	<class name="UserBean" table="user">
+		<id name="user_id" type="string">
+			<column name="user_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="user_name" type="string" column="user_name" />
+		<property name="password" type="string">
+			<column name="password" />
+		</property>
+		<property name="type" type="string">
+			<column name="type" />
+		</property>
+		<property name="createtime" type="date">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="date">
+			<column name="remove_time" />
+		</property>
+	</class>
 </hibernate-mapping>  

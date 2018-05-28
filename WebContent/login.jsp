@@ -23,10 +23,10 @@
 
 <div class="loginBox">
     <div class="login_cont">
-        <form method="post" action="doLogin.php" >
+        <form method="post" action="Userservlet?method=logincheck" >
             <ul class="login">
                 <li class="l_tit">用户名</li>
-                <li class="mb_10"><input type="text"  name="username" placeholder="请输入用户名" class="login_input user_icon"></li>
+                <li class="mb_10"><input type="text"  name="userid" placeholder="请输入用户名" class="login_input user_icon"></li>
                 <li class="l_tit">密码</li>
                 <li class="mb_10"><input type="password" name="password" placeholder="请输入密码" class="login_input user_icon"></li>
                 <li><input type="submit" value="" class="login_btn"></li>
@@ -56,5 +56,12 @@
     <p><a href="#">系统简介</a><i>|</i><a href="#">慕课公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i>客服热线：158 582 67897</p>
     <p>Copyright &copy; 20xx - 20xx the commitment版权所有&nbsp;&nbsp;&nbsp;京ICP备号&nbsp;&nbsp;&nbsp;京ICP证BXXXX-XXXX号&nbsp;&nbsp;&nbsp;某市公安局XX分局备案编号：123456789123</p>
 </div>
+<%
+   String errmsg=(String)session.getAttribute("errormsg");
+   if(errmsg!=null){
+     session.removeAttribute("errormsg");
+     out.println(errmsg);
+   }
+%>
 </body>
 </html>

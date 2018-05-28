@@ -17,7 +17,8 @@
                 http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="jdbcUrl" value="jdbc:mysql://101.132.117.41:3306/edu_manager"></property>
+		<property name="jdbcUrl"
+			value="jdbc:mysql://101.132.117.41:3306/edu_manager"></property>
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="root"></property>
@@ -48,22 +49,17 @@
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-	<!-- <tx:advice id="txAdvice"
-		transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="?" propagation="REQUIRED"
-				isolation="DEFAULT" read-only="false" />
-		</tx:attributes>
-	</tx:advice>
-	<aop:config>
-		<aop:pointcut
-			expression="execution(* cn.edu.zucc.ems.dao.*.*(..))" id="txPointCut" />
-		<aop:advisor advice-ref="txAdvice"
-			pointcut-ref="txPointCut" />
-	</aop:config> -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager"> 
+		<tx:attributes> <tx:method name="?" propagation="REQUIRED" isolation="DEFAULT" 
+		read-only="false" /> </tx:attributes> </tx:advice> <aop:config> <aop:pointcut 
+		expression="execution(* cn.edu.zucc.ems.dao.*.*(..))" id="txPointCut" /> 
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" /> </aop:config> -->
 	<bean id="teacherDAO" class="cn.edu.zucc.ems.model.TeacherDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean id="userDAO" class="cn.edu.zucc.ems.model.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>
