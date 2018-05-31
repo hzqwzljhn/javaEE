@@ -47,15 +47,9 @@ public class Userservlet extends HttpServlet {
 		String method = request.getParameter("method");
 		String result = "";
 		if (method.equals("logincheck")) {
-
-			try {
 				result = this.logincheck(request);
-				System.out.println("logincheck");
-			} catch (Exception e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
-			}
-
+		} else if (method.equals("logout")) {
+				result=this.logout(request);
 		} else {
 			System.out.println("no");
 		}
@@ -63,6 +57,17 @@ public class Userservlet extends HttpServlet {
 		if (dispatcher != null)
 			dispatcher.forward(request, response);
 
+	}
+
+	/**
+	 * 退出
+	 * @param request
+	 * @return
+	 */
+	private String logout(HttpServletRequest request) {
+		request.getSession().removeAttribute("userid");
+		request.getSession().getAttribute("password");
+		return "/login.jsp";
 	}
 
 	/**
@@ -85,18 +90,19 @@ public class Userservlet extends HttpServlet {
 			}
 			
 			if (!password.equals(userBean.getPassword())) {
-				
 				throw new Exception("密码错误");
 			}
 			request.getSession().setAttribute("username", userBean.getUser_name());
 			if ("管理员".equals(userBean.getType())) {
+				request.getSession().setAttribute("userid",userid );
+				request.getSession().setAttribute("password",password );
 				return "/manager.jsp";
 			} else {
 				return "/error.jsp";
 			}
 		} catch (Exception e) {
-			request.setAttribute("errormsg", e.getMessage());
-			return "/error.jsp";
+			request.getSession().setAttribute("errormsg", e.getMessage());
+			return "/login.jsp";
 		}
 
 	}

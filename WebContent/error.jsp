@@ -13,7 +13,7 @@
 					<font color=red> <%
  	String errmsg = (String) session.getAttribute("errormsg");
  	if (errmsg != null) {
- 		session.removeAttribute("errormsg");
+ 		//session.removeAttribute("errormsg");
  		out.println(errmsg);
  	}
  %>
