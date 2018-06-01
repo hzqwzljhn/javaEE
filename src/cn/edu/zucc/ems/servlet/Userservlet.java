@@ -98,7 +98,10 @@ public class Userservlet extends HttpServlet {
 				request.getSession().setAttribute("password",password );
 				return "/manager.jsp";
 			} else {
-				return "/error.jsp";
+				System.out.println("teacher");
+				request.getSession().setAttribute("userid",userid );
+				request.getSession().setAttribute("password",password );
+				return "/teacher.jsp";
 			}
 		} catch (Exception e) {
 			request.getSession().setAttribute("errormsg", e.getMessage());

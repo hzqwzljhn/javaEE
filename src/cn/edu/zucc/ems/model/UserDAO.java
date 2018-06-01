@@ -27,6 +27,7 @@ public class UserDAO {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
 		UserBean userBean=session.get(UserBean.class, userid);
+		System.out.println(userBean.getUser_name());
 		return userBean;
 	}
 

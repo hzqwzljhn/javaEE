@@ -12,7 +12,7 @@
 	pageEncoding="UTF-8"%>
 
 		<% String name = (String) session.getAttribute("userid");
-	if (name == null) {
+	if (name == null||name!="admin") {
 		%>
 		<script type="text/javascript">
 		alert("您还没有登录，请登录...");

@@ -32,6 +32,13 @@
                 <li><input type="submit" value="" class="login_btn"></li>
             </ul>
         </form>
+        <%
+   String errmsg=(String)session.getAttribute("errormsg");
+   if(errmsg!=null){
+     session.removeAttribute("errormsg");
+     out.println(errmsg);
+   }
+%>
         <div class="login_partners">
             <p class="l_tit">使用合作方账号登陆网站</p>
             <ul class="login_list clearfix">
@@ -51,13 +58,7 @@
 
 </div>
 
-<div class="hr_25"><%
-   String errmsg=(String)session.getAttribute("errormsg");
-   if(errmsg!=null){
-     session.removeAttribute("errormsg");
-     out.println(errmsg);
-   }
-%></div>
+<div class="hr_25"></div>
 <div class="footer">
     <p><a href="#">系统简介</a><i>|</i><a href="#">慕课公告</a><i>|</i> <a href="#">招纳贤士</a><i>|</i><a href="#">联系我们</a><i>|</i>客服热线：158 582 67897</p>
     <p>Copyright &copy; 20xx - 20xx the commitment版权所有&nbsp;&nbsp;&nbsp;京ICP备号&nbsp;&nbsp;&nbsp;京ICP证BXXXX-XXXX号&nbsp;&nbsp;&nbsp;某市公安局XX分局备案编号：123456789123</p>

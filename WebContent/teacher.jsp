@@ -6,6 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>平时成绩管理系统</title>
     <link rel="stylesheet" href="style/backstage.css">
+		<% String name = (String) session.getAttribute("userid");
+	if (name == null) {
+		%>
+		<script type="text/javascript">
+		alert("您还没有登录，请登录...");
+		window.location.href="login.jsp";
+		</script>
+		<% 
+	}
+%>
 </head>
 <body>
 <div class="head">
@@ -15,7 +25,7 @@
 <div class="operation_user clearfix">
 
     <div class="link fr">
-        <a href="teacher.jsp" target="_parent" class="icon icon_i">首页</a><span></span><a href="#" class="icon icon_e">退出</a>
+        <a href="teacher.jsp" target="_parent" class="icon icon_i">首页</a><span></span><a href="Userservlet?method=logout" target="_parent"  class="icon icon_e">退出</a>
     </div>
 </div>
 <div class="content clearfix">
