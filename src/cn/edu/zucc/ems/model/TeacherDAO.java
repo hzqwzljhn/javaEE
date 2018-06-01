@@ -26,6 +26,6 @@ public class TeacherDAO {
 		Session session = sessionFactory.getCurrentSession();
 		List<TeacherBean> list = session.createQuery("from TeacherBean").list();
 		
-		return list;
+		return list; 
 	}
 }
