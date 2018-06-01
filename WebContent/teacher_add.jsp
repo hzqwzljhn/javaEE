@@ -14,7 +14,7 @@
 <div class="details">
     <div class="details_operation clearfix">
 
-        <form action="typemethod.php?act=addtype" method="post">
+        <form action="TeacherServlet?method=addteacher" method="post">
             <table width="35%" border="1" cellpadding="5" cellspacing="0" bgcolor="#ccc" >
                 <tr>
                     <td align="center" width="20%">教师编号</td>
