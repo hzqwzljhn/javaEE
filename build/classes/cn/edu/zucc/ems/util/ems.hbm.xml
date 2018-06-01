@@ -35,4 +35,27 @@
 			<column name="remove_time" />
 		</property>
 	</class>
+	<class name="CourseBean" table="course">
+		<id name="course_id" type="java.lang.Integer">
+			<column name="course_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="course_name" type="string" column="course_name" />
+		<property name="user_id" type="string">
+			<column name="user_id" />
+		</property>
+		
+		<property name="class_id" type="java.lang.Integer">
+			<column name="class_id" />
+		</property>
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="course_time" type="timestamp">
+			<column name="course_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+	</class>
 </hibernate-mapping>  

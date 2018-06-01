@@ -40,7 +40,7 @@
             <div class="title">教师</div>
             <ul class="mList">
                 <li>
-                    <h3><a href="#" target="manage1" style="font-size: 18px">课程管理</a></h3>
+                    <h3><a href="CourseServlet" target="manage1" style="font-size: 18px">课程管理</a></h3>
                     <!-- <dl>
                         <dd><a href="#" target="manage1">添加居民</a></dd>
 

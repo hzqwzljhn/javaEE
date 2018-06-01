@@ -12,7 +12,7 @@
 <div class="details">
     <div class="details_operation clearfix">
         <div class="bui_select">
-            <a href="class_add.jsp"> <input type="button" value="添加班级" class="btn"></a>
+            <a href="course_add.jsp"> <input type="button" value="添加班级" class="btn"></a>
         </div>
      
     </div>
