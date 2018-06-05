@@ -1,5 +1,6 @@
 package cn.edu.zucc.ems.bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class UserBean {
@@ -7,8 +8,8 @@ public class UserBean {
 	private String user_name;
 	private String password;
 	private String type;
-	private Date createtime;
-	private Date removetime;
+	private Timestamp createtime;
+	private Timestamp removetime;
 
 	public String getUser_id() {
 		return user_id;
@@ -42,19 +43,19 @@ public class UserBean {
 		this.type = type;
 	}
 
-	public Date getCreatetime() {
+	public Timestamp getCreatetime() {
 		return createtime;
 	}
 
-	public void setCreatetime(Date createtime) {
+	public void setCreatetime(Timestamp createtime) {
 		this.createtime = createtime;
 	}
 
-	public Date getRemovetime() {
+	public Timestamp getRemovetime() {
 		return removetime;
 	}
 
-	public void setRemovetime(Date removetime) {
+	public void setRemovetime(Timestamp removetime) {
 		this.removetime = removetime;
 	}
 }
