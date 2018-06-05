@@ -32,7 +32,7 @@
     <div class="main">
         <div class="cont">
             <!--右侧内容-->
-            <iframe src="main.jsp" name="manage1" style="width:100%;height:750px"></iframe>
+            <iframe src="main.jsp" name="manage1" style="width:100%;height:100%"></iframe>
         </div>
     </div>
     <div class="menu">
@@ -47,7 +47,7 @@
                     </dl> -->
                 </li>
                 <li>
-                    <h3><a href="ClassServlet?act=listclass" target="manage1" style="font-size: 18px">班级管理</a></h3>
+                    <h3><a href="ClassServlet" target="manage1" style="font-size: 18px">班级管理</a></h3>
                     
                 </li>
 
@@ -62,4 +62,5 @@
 </div>
 
 </body>
+
 </html>

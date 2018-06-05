@@ -14,15 +14,16 @@
 <div class="details">
     <div class="details_operation clearfix">
 
-        <form action="typemethod.php?act=addtype" method="post">
+        <form action="CourseServlet?act=addtype" method="post">
             <table width="35%" border="1" cellpadding="5" cellspacing="0" bgcolor="#ccc" >
-                <tr>
-                    <td align="center" width="20%">课程编号</td>
-                    <td><input type="text" name="typeid" placeholder="     请输入课程编号"></td>
-                </tr>
+                
                 <tr>
                     <td align="center">课程名称</td>
-                    <td><input type="text" name="typename" placeholder="     请输入课程名称"></td>
+                    <td><input type="text" name="coursename" placeholder="     请输入课程名称"></td>
+                </tr>
+                <tr>
+                    <td align="center">课程时间</td>
+                    <td><input type="text" name="coursename" placeholder="     请输入课程名称"></td>
                 </tr>
             </table>
             <br />

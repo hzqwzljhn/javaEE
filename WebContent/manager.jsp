@@ -45,7 +45,7 @@
 			<div class="cont">
 				<!--右侧内容-->
 				<iframe src="main.jsp" name="manage1"
-					style="width: 100%; height: 750px"></iframe>
+					style="width: 100%; height: 100%"></iframe>
 			</div>
 		</div>
 		<div class="menu">
