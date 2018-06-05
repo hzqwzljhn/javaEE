@@ -47,12 +47,12 @@
                     </dl> -->
                 </li>
                 <li>
-                    <h3><a href="class_list.jsp" target="manage1" style="font-size: 18px">班级管理</a></h3>
+                    <h3><a href="ClassServlet?act=listclass" target="manage1" style="font-size: 18px">班级管理</a></h3>
                     
                 </li>
 
                 <li>
-                    <h3><a href="student_list.jsp" target="manage1" style="font-size: 18px">学生管理</a></h3>
+                    <h3><a href="StudentServlet" target="manage1" style="font-size: 18px">学生管理</a></h3>
                    
                 </li>
 

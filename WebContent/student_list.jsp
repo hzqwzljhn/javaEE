@@ -3,6 +3,8 @@
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*,cn.edu.zucc.ems.bean.*" %>
+<%@ page import="cn.edu.zucc.ems.model.*" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>平时成绩管理系统</title>
     <link rel="stylesheet" href="style/backstage.css">
@@ -12,7 +14,7 @@
 <div class="details">
     <div class="details_operation clearfix">
         <div class="bui_select">
-            <a href="student_add.jsp"> <input type="button" value="添加学生" class="btn"></a>
+            <a href="StudentServlet?method=addstudent"> <input type="button" value="添加学生" class="btn"></a>
         </div>
 
     </div>
@@ -27,21 +29,24 @@
         </tr>
         </thead>
         <tbody>
-        <!--                //数据库写在下面-->
+        <% 
+        	List objlist = (List)request.getAttribute("objlist");
+        	if(objlist != null){
+        		for(int i=0;i<objlist.size();i++){
+        			StudentBean	student = (StudentBean)objlist.get(i);
+        %>
         <tr>
+            <td align="center"><%= student.getStudent_id() %></td> 
+            <td align="center"><%= student.getStudent_name() %></td>
             <td>
-                <label>
-
-                </label>
-            </td>
-            <td>
-
-            </td>
-            <td>
-                <a href="student_edit.jsp" ><input type="button" value="修改" class="btn"></a>
-                <a href="#" ><input type="button" value="删除" class="btn"></a>
+                <a href="StudentServlet?method=modifystudent&studentid=<%= student.getStudent_id() %>" ><input type="button" value="修改" class="btn"></a>
+                <a href="StudentServlet?method=deletestudent&studentid=<%= student.getStudent_id() %>" ><input type="button" value="删除" class="btn"></a>
             </td>
         </tr>
+        <%
+        		}
+        	}
+        %>
         </tbody>
     </table>
 </div>

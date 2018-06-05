@@ -12,7 +12,7 @@
 		<property name="type" type="string">
 			<column name="type" />
 		</property>
-		<property name="flag" type="int">
+		<property name="flag" type="java.lang.Integer">
 			<column name="flag" />
 		</property>
 	</class>
@@ -28,10 +28,36 @@
 		<property name="type" type="string">
 			<column name="type" />
 		</property>
-		<property name="createtime" type="date">
+		<property name="createtime" type="java.util.Date">
 			<column name="create_time" />
 		</property>
-		<property name="removetime" type="date">
+		<property name="removetime" type="java.util.Date">
+			<column name="remove_time" />
+		</property>
+	</class>
+	<class name="ClassBean" table="classes">
+		<id name="class_id" type="java.lang.Integer">
+			<column name="class_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="class_name" type="string" column="class_name" />
+		<property name="createtime" type="java.util.Date">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="java.util.Date">	
+			<column name="remove_time" />
+		</property>
+	</class>
+	<class name="StudentBean" table="student">
+		<id name="student_id" type="java.lang.Integer">
+			<column name="student_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="student_name" type="string" column="student_name" />
+		<property name="createtime" type="java.util.Date">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="java.util.Date">	
 			<column name="remove_time" />
 		</property>
 	</class>
