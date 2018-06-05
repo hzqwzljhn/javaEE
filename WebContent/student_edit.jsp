@@ -3,6 +3,8 @@
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="cn.edu.zucc.ems.bean.StudentBean" %>
+<%@ page import="cn.edu.zucc.ems.model.*" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>平时成绩管理系统</title>
     <link rel="stylesheet" href="style/backstage.css">
@@ -10,19 +12,25 @@
 <body>
 
 
-<div class="title">添加学生</div>
+<div class="title">修改学生信息</div>
 <div class="details">
     <div class="details_operation clearfix">
 
-        <form action="typemethod.php?act=addtype" method="post">
+        <form action="StudentServlet?method=modifyresult" method="post">
+        	<%
+        		StudentBean bean = (StudentBean)request.getAttribute("obj");
+        		if(bean==null){
+        			return;
+        		}
+        	%>
             <table width="35%" border="1" cellpadding="5" cellspacing="0" bgcolor="#ccc" >
                 <tr>
                     <td align="center" width="20%">学生编号</td>
-                    <td><input type="text" name="typeid" placeholder="     请输入学生编号"></td>
+                    <td><input type="text" name="studentid" readonly='readonly' value='<%=bean.getStudent_id()%>'></td>
                 </tr>
                 <tr>
                     <td align="center">学生姓名</td>
-                    <td><input type="text" name="typename" placeholder="     请输入学生姓名"></td>
+                    <td><input type="text" name="studentname" value='<%=bean.getStudent_name()%>'></td>
                 </tr>
             </table>
             <br />

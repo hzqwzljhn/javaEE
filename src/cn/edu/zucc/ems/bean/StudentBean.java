@@ -3,17 +3,17 @@ package cn.edu.zucc.ems.bean;
 import java.util.Date;
 
 public class StudentBean {
-	private String student_id;
+	private int student_id;
 	private String student_name;
 	private int class_id;
 	private Date createtime;
 	private Date removetime;
 
-	public String getStudent_id() {
+	public int getStudent_id() {
 		return student_id;
 	}
 
-	public void setStudent_id(String student_id) {
+	public void setStudent_id(int student_id) {
 		this.student_id = student_id;
 	}
 

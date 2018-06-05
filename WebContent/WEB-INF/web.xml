@@ -24,4 +24,24 @@
     <servlet-name>Userservlet</servlet-name>
     <url-pattern>/Userservlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ClassServlet</display-name>
+    <servlet-name>ClassServlet</servlet-name>
+    <servlet-class>cn.edu.zucc.ems.servlet.ClassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClassServlet</servlet-name>
+    <url-pattern>/ClassServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>StudentServlet</display-name>
+    <servlet-name>StudentServlet</servlet-name>
+    <servlet-class>cn.edu.zucc.ems.servlet.StudentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentServlet</servlet-name>
+    <url-pattern>/StudentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
