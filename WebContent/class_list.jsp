@@ -3,6 +3,8 @@
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.*,cn.edu.zucc.ems.bean.*"%>
+    <%@page import="cn.edu.zucc.ems.model.*"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>平时成绩管理系统</title>
     <link rel="stylesheet" href="style/backstage.css">
@@ -12,7 +14,7 @@
 <div class="details">
     <div class="details_operation clearfix">
         <div class="bui_select">
-            <a href="course_add.jsp"> <input type="button" value="添加班级" class="btn"></a>
+            <a href="ClassServlet?act=addclass"> <input type="button" value="添加班级" class="btn"></a>
         </div>
      
     </div>
@@ -27,23 +29,24 @@
         </tr>
         </thead>
         <tbody>
-        <!--                //数据库写在下面-->
+       <%
+					List objlist = (List) request.getAttribute("objlist");
+					if (objlist != null) {
+						for (int i = 0; i < objlist.size(); i++) {
+							ClassBean classes = (ClassBean) objlist.get(i);
+				%>
         <tr>
+            <td><%= classes.getClass_id() %> </td>
+            <td><%= classes.getClass_name() %></td>
             <td>
-                <label>
-
-                </label>
-            </td>
-            <td>
-
-            </td>
-            <td>
-                <a href="class_edit.jsp" ><input type="button" value="修改班级" class="btn"></a>
-                <a href="#" ><input type="button" value="删除班级" class="btn"></a>
+                <a href="ClassServlet?act=modifyclass&classid=<%= classes.getClass_id()%>" ><input type="button" value="修改班级" class="btn"></a>
+                <a href="ClassServlet?act=deleteclass&classid=<%= classes.getClass_id()%>" ><input type="button" value="删除班级" class="btn"></a>
                 <a href="#" ><input type="button" value="导入学生" class="btn"></a>
                 <a href="class_detail.jsp" ><input type="button" value="详情" class="btn"></a>
             </td>
         </tr>
+        <%	}
+				}%>
         </tbody>
     </table>
 </div>

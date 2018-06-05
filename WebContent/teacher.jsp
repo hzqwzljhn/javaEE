@@ -47,7 +47,7 @@
                     </dl> -->
                 </li>
                 <li>
-                    <h3><a href="class_list.jsp" target="manage1" style="font-size: 18px">班级管理</a></h3>
+                    <h3><a href="ClassServlet" target="manage1" style="font-size: 18px">班级管理</a></h3>
                     
                 </li>
 

@@ -3,6 +3,7 @@ package cn.edu.zucc.ems.util;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.edu.zucc.ems.model.ClassDAO;
 import cn.edu.zucc.ems.model.CourseDAO;
 import cn.edu.zucc.ems.model.UserDAO;
 
@@ -13,5 +14,8 @@ public class connectUtil {
 	}
 	public CourseDAO getCourseConnect() {
 		return (CourseDAO) this.context.getBean("courseDAO");
+	}
+	public ClassDAO getClassConnect() {
+		return (ClassDAO)this.context.getBean("classDAO");
 	}
 }

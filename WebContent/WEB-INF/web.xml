@@ -34,4 +34,14 @@
     <servlet-name>CourseServlet</servlet-name>
     <url-pattern>/CourseServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ClassServlet</display-name>
+    <servlet-name>ClassServlet</servlet-name>
+    <servlet-class>cn.edu.zucc.ems.servlet.ClassServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClassServlet</servlet-name>
+    <url-pattern>/ClassServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

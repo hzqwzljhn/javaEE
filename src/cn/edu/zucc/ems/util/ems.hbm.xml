@@ -58,4 +58,18 @@
 			<column name="remove_time" />
 		</property>
 	</class>
+	<class name="ClassBean" table="classes">
+		<id name="class_id" type="java.lang.Integer">
+			<column name="class_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="class_name" type="string" column="class_name" />
+		
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+	</class>
 </hibernate-mapping>  
