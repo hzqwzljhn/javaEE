@@ -53,6 +53,8 @@ public class TeacherServlet extends HttpServlet {
 			result = this.modifyTeacher(request);
 		} else if(request.getParameter("method").equals("loadAllTeacher")) {
 			result = this.loadAllTeacher(request);
+		} else if(request.getParameter("method").equals("deleteTeacher")) {
+			result = this.deleteTeacher(request);
 		}
 		
 		RequestDispatcher dispatcher = request.getSession().getServletContext().getRequestDispatcher(result);
@@ -88,8 +90,6 @@ public class TeacherServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		String pwd2 = request.getParameter("password2");
-		System.out.println(pwd);
-		System.out.println(pwd2);
 		if (this.dao.readUser(userid) == null) {
 			try {
 				throw new Exception("用户不存在！");
@@ -109,8 +109,22 @@ public class TeacherServlet extends HttpServlet {
 		} else {
 			UserBean test = this.dao.modifyTeacher(userid, username, pwd);
 			System.out.println(test.getUser_id() + " " + test.getUser_name() + " " + test.getType());
+			List<UserBean> list = this.dao.loadAllTeacher();
+			request.setAttribute("userList", list);
 			return "/teacher_list.jsp";
 		}
+	}
+	
+	private String deleteTeacher(HttpServletRequest request) {
+		String userid = request.getParameter("userid");
+		System.out.println(userid);
+		
+		UserBean userBean = this.dao.deleteTeacher(userid);
+		
+		List<UserBean> list = this.dao.loadAllTeacher();
+		request.setAttribute("userList", list);
+		
+		return "/teacher_list.jsp";
 	}
 	
 	private String loadAllTeacher(HttpServletRequest request) {

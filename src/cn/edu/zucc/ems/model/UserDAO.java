@@ -52,16 +52,33 @@ public class UserDAO {
 	public UserBean modifyTeacher(String userid, String username, String pwd) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		org.hibernate.query.Query query = session.createQuery(
-				"update user u set u.user_id = " + userid + " username = " + username + " password = " + pwd);
+		org.hibernate.query.Query query = session.createQuery("update UserBean set user_id = " + userid
+				+ " ,user_name = '" + username + "' ,password = " + pwd + " where user_id = " + userid);
+		query.executeUpdate();
 		return readUser(userid);
 	}
 	
-	public List<UserBean> loadAllTeacher(){
+	public UserBean deleteTeacher(String userid) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		org.hibernate.query.Query query = session.createQuery("from UserBean where type = '教师' and remove_time is null ");
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		/*org.hibernate.query.Query query = session.createQuery("update UserBean set removetime = '" + time +  "' where user_id = " + userid);
+		query.executeUpdate();*/
 		
+		UserBean userBean = readUser(userid);
+		userBean.setRemovetime(time);;
+		session.save(userBean);
+		
+		return userBean;
+	}
+
+
+	public List<UserBean> loadAllTeacher() {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		org.hibernate.query.Query query = session
+				.createQuery("from UserBean where type = '教师' and remove_time is null ");
+
 		List<UserBean> list = query.list();
 		System.out.println(list.get(0).getUser_name());
 		return list;
