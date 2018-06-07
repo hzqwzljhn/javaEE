@@ -54,7 +54,7 @@
 				<ul class="mList">
 					<li>
 						<h3>
-							<a href="teacher_list.jsp" target="manage1"
+							<a href="TeacherServlet?method=loadAllTeacher" target="manage1"
 								style="font-size: 18px">教师管理</a>
 						</h3>
 

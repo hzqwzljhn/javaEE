@@ -28,10 +28,10 @@
 		<property name="type" type="string">
 			<column name="type" />
 		</property>
-		<property name="createtime" type="date">
+		<property name="createtime" type="timestamp">
 			<column name="create_time" />
 		</property>
-		<property name="removetime" type="date">
+		<property name="removetime" type="timestamp">
 			<column name="remove_time" />
 		</property>
 	</class>
