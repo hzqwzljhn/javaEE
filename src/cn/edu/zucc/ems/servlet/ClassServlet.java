@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zucc.ems.model.ClassDAO;
+import cn.edu.zucc.ems.model.StudentDAO;
 import cn.edu.zucc.ems.util.connectUtil;
 
 /**
@@ -17,7 +18,8 @@ import cn.edu.zucc.ems.util.connectUtil;
 public class ClassServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        ClassDAO dao=new connectUtil().getClassConnect();
-    /**
+       StudentDAO dao1=new connectUtil().getStudentConnect();
+       /**
      * @see HttpServlet#HttpServlet()
      */
     public ClassServlet() {
@@ -50,6 +52,12 @@ public class ClassServlet extends HttpServlet {
 			result=modifyresult(request);
 		}else if ("deleteclass".equals(act)) {
 			result=deleteclass(request);
+		}else if("importlist".equals(act)) {
+			result=importstu(request);
+		}else if("importstu".equals(act)){
+			result=importstudent(request);
+		}else if ("exportstu".equals(act)) {
+			result=expportStudent(request);
 		}
 		else {
 			result=listClass(request);
@@ -57,6 +65,49 @@ public class ClassServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getSession().getServletContext().getRequestDispatcher(result);
 		if (dispatcher != null)
 			dispatcher.forward(request, response);
+	}
+
+	/**移除学生
+	 * @param request
+	 * @return
+	 */
+	private String expportStudent(HttpServletRequest request) {
+		String stuid=request.getParameter("stuid");
+		String classid = request.getParameter("classid");
+		this.dao1.exportStudent(Integer.valueOf(stuid),Integer.valueOf(classid));
+		request.setAttribute("classid", classid);
+		request.setAttribute("objlist1", this.dao.listNoclass());
+		request.setAttribute("objlist2", this.dao.listMyclass(classid));
+		return "/import_stu.jsp";
+	}
+
+	/**
+	 * 导入学生
+	 * @param request
+	 * @return
+	 */
+	private String importstudent(HttpServletRequest request) {
+		String stuid=request.getParameter("stuid");
+		String classid = request.getParameter("classid");
+		this.dao1.importstudent(Integer.valueOf(stuid),Integer.valueOf(classid));
+		request.setAttribute("classid", classid);
+		request.setAttribute("objlist1", this.dao.listNoclass());
+		request.setAttribute("objlist2", this.dao.listMyclass(classid));
+		return "/import_stu.jsp";
+	
+	}
+
+	/**
+	 * 导入学生页面进入
+	 * @param request
+	 * @return
+	 */
+	private String importstu(HttpServletRequest request) {
+		String classid = request.getParameter("classid");
+		request.setAttribute("classid", classid);
+		request.setAttribute("objlist1", this.dao.listNoclass());
+		request.setAttribute("objlist2", this.dao.listMyclass(classid));
+		return "/import_stu.jsp";
 	}
 
 	/**

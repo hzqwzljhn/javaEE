@@ -35,6 +35,12 @@ public class UserDAO {
 		return userBean;
 	}
 
+	/**
+	 * 添加教师
+	 * @param userid
+	 * @param username
+	 * @return
+	 */
 	public UserBean addTeacher(String userid, String username) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -50,6 +56,13 @@ public class UserDAO {
 		return userBean;
 	}
 
+	/**
+	 * 修改教师信息
+	 * @param userid
+	 * @param username
+	 * @param pwd
+	 * @return
+	 */
 	public UserBean modifyTeacher(String userid, String username, String pwd) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -59,6 +72,11 @@ public class UserDAO {
 		return readUser(userid);
 	}
 	
+	/**
+	 * 删除老师
+	 * @param userid
+	 * @return
+	 */
 	public UserBean deleteTeacher(String userid) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -75,6 +93,10 @@ public class UserDAO {
 	}
 
 
+	/**
+	 * 遍历所有老师
+	 * @return
+	 */
 	public List<UserBean> loadAllTeacher() {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
