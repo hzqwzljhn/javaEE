@@ -85,6 +85,11 @@ public class TeacherServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * 修改教师
+	 * @param request
+	 * @return
+	 */
 	private String modifyTeacher(HttpServletRequest request) {
 		String userid = request.getParameter("userid");
 		String username = request.getParameter("username");
@@ -115,6 +120,11 @@ public class TeacherServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * 删除教师
+	 * @param request
+	 * @return
+	 */
 	private String deleteTeacher(HttpServletRequest request) {
 		String userid = request.getParameter("userid");
 		System.out.println(userid);
@@ -127,6 +137,11 @@ public class TeacherServlet extends HttpServlet {
 		return "/teacher_list.jsp";
 	}
 	
+	/**
+	 * 遍历所有老师
+	 * @param request
+	 * @return
+	 */
 	private String loadAllTeacher(HttpServletRequest request) {
 		List<UserBean> list = this.dao.loadAllTeacher();
 		request.setAttribute("userList", list);
