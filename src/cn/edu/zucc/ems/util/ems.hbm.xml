@@ -67,6 +67,9 @@
 		<property name="createtime" type="java.util.Date">
 			<column name="create_time" />
 		</property>
+		<property name="class_id" type="java.lang.Integer">
+			<column name="class_id" />
+		</property>
 		<property name="removetime" type="java.util.Date">	
 			<column name="remove_time" />
 		</property>

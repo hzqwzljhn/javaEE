@@ -9,12 +9,14 @@
 <title>平时成绩管理系统</title>
 <link rel="stylesheet" href="style/backstage.css">
 <script language="jscript">
+	
 		
 	function dd() { 
 		if(confirm("请确认是否删除！" )) 
 			return true; 
 		return false;  
 	} 
+
 
 </script>
 </head>
@@ -50,7 +52,10 @@
 						<td><a
 							href="teacher_edit.jsp?user_id=${user.user_id}&user_name=${user.user_name}&password=${user.password}">
 								<input type="button" value="修改" class="btn">
-						</a> <a href="TeacherServlet?method=deleteTeacher&userid=${user.user_id }" onclick="return dd();"><input type="button" value="删除" class="btn"></a>
+						</a> <a
+							href="TeacherServlet?method=deleteTeacher&userid=${user.user_id }"
+							onclick="return dd();"><input type="button" value="删除"
+								class="btn"></a>
 					</tr>
 				</c:forEach>
 			</tbody>

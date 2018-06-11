@@ -1,6 +1,7 @@
 package cn.edu.zucc.ems.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.zucc.ems.bean.StudentBean;
 import cn.edu.zucc.ems.model.CourseDAO;
 import cn.edu.zucc.ems.util.connectUtil;
 
@@ -16,7 +18,7 @@ import cn.edu.zucc.ems.util.connectUtil;
  */
 public class CourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       CourseDAO dao=new connectUtil().getCourseConnect();
+    CourseDAO dao=new connectUtil().getCourseConnect();
     /**
      * @see HttpServlet#HttpServlet()
      */
