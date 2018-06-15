@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.edu.zucc.ems.bean.CheckBean;
 import cn.edu.zucc.ems.bean.StudentBean;
 
 @Repository
@@ -21,10 +22,31 @@ public class CheckDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	public List<StudentBean> loadAllStudentByClass(int classid){
+	public List<CheckBean> loadAllCheckList(int courseid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		List<StudentBean> list = session.createQuery("from StudentBean where class_id = " + classid).list();
+		List<CheckBean> list = session.createQuery("from CheckBean where course_id = " + courseid).list();
+		return list;
+		
+	}
+	public List<CheckBean> addCheck(int courseid){
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		List<CheckBean> list = session.createQuery("from CheckBean where course_id = " + courseid).list();
+		return list;
+		
+	}
+	public List<CheckBean> deleteCheck(int courseid){
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		List<CheckBean> list = session.createQuery("from CheckBean where course_id = " + courseid).list();
+		return list;
+		
+	}
+	public List<CheckBean> readCheckDetail(int courseid){
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		List<CheckBean> list = session.createQuery("from CheckBean where course_id = " + courseid).list();
 		return list;
 		
 	}

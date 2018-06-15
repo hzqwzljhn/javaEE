@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.edu.zucc.ems.bean.CheckBean;
 import cn.edu.zucc.ems.bean.StudentBean;
 import cn.edu.zucc.ems.model.*;
 import cn.edu.zucc.ems.util.connectUtil;
@@ -43,10 +44,16 @@ public class CheckServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String result = null;
 		request.setCharacterEncoding("UTF-8");
-		if (request.getParameter("method").equals("readAllStudentByClass")) {
-			result = this.readAllStudentByClass(request);
-		} else if(request.getParameter("method").equals("homework")) {
-			result = this.readAllStudentByClass(request);
+		if (request.getParameter("tab").equals("readCheck")) {
+			result = this.readCheck(request);
+		} else if(request.getParameter("tab").equals("checklist")) {
+			result = this.loadAllCheckList(request);
+		} else if(request.getParameter("tab").equals("addcheck")) {
+			result = this.addCheck(request);
+		} else if(request.getParameter("tab").equals("deletecheck")) {
+			result = this.deleteCheck(request);
+		} else if(request.getParameter("tab").equals("checkdetail")) {
+			result = this.readCheckDetail(request);
 		}
 		
 		RequestDispatcher dispatcher = request.getSession().getServletContext().getRequestDispatcher(result);
@@ -54,15 +61,36 @@ public class CheckServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 	}
 	
-	private String readAllStudentByClass(HttpServletRequest request) {
-		String string = request.getParameter("classid");
-		//System.out.println(string);
-		int classid = Integer.parseInt(string);
-		List<StudentBean> studentBeans = this.dao.loadAllStudentByClass(classid);
-		request.getSession().setAttribute("tab","homework" );
-		request.getSession().setAttribute("class_id", studentBeans.get(0).getClass_id());
-		request.setAttribute("studentList", studentBeans);
+	private String readCheck(HttpServletRequest request) {
+		String string = request.getParameter("courseid");
+		int courseid = Integer.parseInt(string);
+		request.getSession().setAttribute("tab","check" );
+		request.getSession().setAttribute("course_id", courseid);
 		return "/course_detail.jsp";
+	}
+	
+	private String loadAllCheckList(HttpServletRequest request) {
+		String string = request.getParameter("courseid");
+		int classid = Integer.parseInt(string);
+		List<CheckBean> list = this.dao.loadAllCheckList(classid);
+		request.getSession().setAttribute("tab","checklist" );
+		request.setAttribute("checklist", list);
+		return "/course_detail.jsp";
+	}
+	
+	private String addCheck(HttpServletRequest request) {
+		
+		return "course_detail.jsp";
+	}
+	
+	private String deleteCheck(HttpServletRequest request) {
+		
+		return "/course_detail.jsp";
+	}
+	
+	private String readCheckDetail(HttpServletRequest request) {
+		
+		return "/check_detail.jsp";
 	}
 
 }

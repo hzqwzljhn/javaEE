@@ -88,5 +88,23 @@
 			<column name="remove_time" />
 		</property>
 	</class>
+	<class name="CheckBean" table="checks">
+		<id name="check_id" type="java.lang.Integer">
+			<column name="check_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="check_time" type="timestamp" column="check_time" />
+		
+		<property name="course_id" type="java.lang.Integer">
+			<column name="course_id" />
+		</property>
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+	</class>
+	
 
 </hibernate-mapping>  

@@ -18,8 +18,10 @@
 	<div class="details">
 		<div class="details_operation clearfix">
 			<div class="bui_select" style="margin-right: 5px">
-				<a href="CheckServlet?method=homework&classid=<%=session.getAttribute("class_id") %>"> <input type="button"
-					value="点名" class="btn"></a>
+				<a
+					href="CheckServlet?tab=checklist&courseid=<%=session.getAttribute("course_id")%>">
+					<input type="button" value="点名详情" class="btn">
+				</a>
 			</div>
 
 			<div class="bui_select" style="margin-right: 5px">
@@ -36,7 +38,7 @@
 		<%
 			String tab = (String) session.getAttribute("tab");
 
-			if ("homework".equals(tab)) {
+			if ("check".equals(tab)) {
 		%>
 		<table class="table" cellspacing="0" cellpadding="0">
 			<thead>
@@ -54,11 +56,9 @@
 						<td>${student.student_id }</td>
 						<td>${student.student_name }</td>
 						<td>${student.class_id }</td>
-						<td>
-							<input type="button" name="arrive" value="到课" class="btn"/> 
-							<input type="button" name="late" value="迟到" class="btn"/> 
-							<input type="button" name="miss" value="缺课" class="btn"/>
-						</td>
+						<td><input type="button" name="arrive" value="到课" class="btn" />
+							<input type="button" name="late" value="迟到" class="btn" /> <input
+							type="button" name="miss" value="缺课" class="btn" /></td>
 					</tr>
 				</c:forEach>
 
@@ -115,6 +115,39 @@
 				</tr>
 			</tbody>
 		</table>
+		<%
+			} else if ("checklist".equals(tab)) {
+		%>
+		<div class="details_operation clearfix">
+			<div class="bui_select" style="margin-right: 5px">
+				<a href="CheckServlet?tab=addcheck"> <input type="button" value="添加点名"
+					class="btn"></a>
+			</div>
+		</div>
+		<table class="table" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th width="20%">点名编号</th>
+					<th width="20%">点名时间</th>
+					<th>操作</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${checklist}" var="check">
+					<tr align="center">
+						<td>${check.check_id }</td>
+						<td>${check.check_time }</td>
+						<td>
+							<a href="CheckServlet?tab=checkdetail"><input type="button" name="arrive" value="查看详细" class="btn" /></a> 
+							<a href="CheckServlet?tab=deletecheck"><input type="button" name="arrive" value="删除点名" class="btn" /></a> 
+						</td>
+					</tr>
+				</c:forEach>
+
+			</tbody>
+		</table>
+
 		<%
 			} else {
 				System.out.print("null");
