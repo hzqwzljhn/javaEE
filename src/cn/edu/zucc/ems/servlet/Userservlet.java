@@ -43,7 +43,7 @@ public class Userservlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
+		request.setCharacterEncoding("utf-8");
 		String method = request.getParameter("method");
 		String result = "";
 		if (method.equals("logincheck")) {

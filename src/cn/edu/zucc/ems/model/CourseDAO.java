@@ -32,13 +32,14 @@ public class CourseDAO {
 		return list;
 	}
 	
-	public void addCourse(Integer courseid, String coursename, String coursetime,String userid) throws ParseException{
+	public void addCourse(Integer courseid, String coursename, Integer classid, String coursetime,String userid) throws ParseException{
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
 		CourseBean bean = new CourseBean();
 		bean.setUser_id(userid);
 		bean.setCourse_id(courseid);
 		bean.setCourse_name(coursename);
+		bean.setClass_id(classid);
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(coursetime);
 		bean.setCourse_time(date); 
 		bean.setCreatetime(new Date());

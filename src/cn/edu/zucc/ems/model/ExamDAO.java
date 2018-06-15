@@ -9,11 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.edu.zucc.ems.bean.ExamBean;
 import cn.edu.zucc.ems.bean.StudentBean;
 
 @Repository
 @Transactional
-public class StudentDAO {
+public class ExamDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -21,58 +22,50 @@ public class StudentDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
-	public Object listAllStudent(){
+	public Object loadAllExam(Integer courseid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from StudentBean where removetime is null";
-		List<StudentBean> list = session.createQuery(hql).list();
-		System.out.println(list.get(0).getStudent_name());
+		String hql = "from ExamBean where course_id = '"+courseid+"' and removetime is null";
+		List<ExamBean> list = session.createQuery(hql).list();
+		System.out.println(list.get(0).getExam_name());
 		return list;
 	}
 	
-	public Object getStudentByClassid(Integer classid){ 
+	public void addExam(String examname,Integer courseid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from StudentBean where class_id = '"+classid+"' and removetime is null";
-		List<StudentBean> list = session.createQuery(hql).list();
-		System.out.println(list.get(0).getStudent_name());
-		return list;
-	}
-	
-	public void addStudent(Integer studentid, String studentname){
-		this.setSessionFactory(sessionFactory);
-		Session session = sessionFactory.getCurrentSession();
-		StudentBean bean = new StudentBean();
-		bean.setStudent_id(studentid);
-		bean.setStudent_name(studentname);
+		ExamBean bean = new ExamBean();
+		bean.setExam_name(examname);
+		bean.setCourse_id(courseid);
 		bean.setCreatetime(new Date());
 		session.saveOrUpdate(bean);
 	}
 	
-	public void modifyStudent(Integer studentid, String studentname){
+	public void modifyExam(Integer examid, String examname){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		StudentBean bean = getStudent(studentid);
-		bean.setStudent_id(studentid);
-		bean.setStudent_name(studentname);
+		ExamBean bean = getExam(examid);
+		bean.setExam_id(examid);
+		bean.setExam_name(examname);
 		session.update(bean);
 	}
 	
-	public StudentBean getStudent(Integer studentid){
+	public ExamBean getExam(Integer examid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		StudentBean bean = (StudentBean)session.get(StudentBean.class,studentid);
+		ExamBean bean = (ExamBean)session.get(ExamBean.class,examid);
 		if(bean == null){
 			System.out.println("null");
 		}
 		return bean;
 	}
 	
-	public void deleteStudent(Integer studentid){
+	public void deleteExam(Integer examid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
-		StudentBean bean = getStudent(studentid);
+		ExamBean bean = getExam(examid);
 		bean.setRemovetime(new Date());
 		session.update(bean);
 	}
+	
 }

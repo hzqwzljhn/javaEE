@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.edu.zucc.ems.model.ClassDAO;
 import cn.edu.zucc.ems.model.CourseDAO;
+import cn.edu.zucc.ems.model.ExamDAO;
+import cn.edu.zucc.ems.model.ExamDetailDAO;
 import cn.edu.zucc.ems.model.StudentDAO;
 import cn.edu.zucc.ems.model.UserDAO;
 
@@ -22,7 +24,12 @@ public class connectUtil {
 	}
 	public StudentDAO getStudentConnect() {
 		return (StudentDAO) this.context.getBean("studentDAO");
-
+	}
+	public ExamDAO getExamConnect() {
+		return (ExamDAO) this.context.getBean("examDAO");
+	}
+	public ExamDetailDAO getExamDetailConnect(){
+		return (ExamDetailDAO) this.context.getBean("examDetailDAO");
 	}
 }
 

@@ -85,5 +85,33 @@
 			<column name="remove_time" />
 		</property>
 	</class>
-
+	<class name="ExamBean" table="exam">
+		<id name="exam_id" type="java.lang.Integer">
+			<column name="exam_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="exam_name" type="string" column="exam_name" />
+		<property name="course_id" type="java.lang.Integer" column="course_id" />
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+	</class>
+	<class name="ExamdetailBean" table="exam_detail">
+		<id name="exam_detail_id" type="java.lang.Integer">
+			<column name="exam_detail_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="score" type="java.lang.Integer" column="score" />
+		<property name="student_id" type="java.lang.Integer" column="student_id" />
+		<property name="exam_id" type="java.lang.Integer" column="exam_id" />
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+	</class>
 </hibernate-mapping>  

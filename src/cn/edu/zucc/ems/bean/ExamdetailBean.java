@@ -6,6 +6,7 @@ public class ExamdetailBean {
 	private int exam_detail_id;
 	private int score;
 	private int exam_id;
+	private int student_id;
 	private Date createtime;
 	private Date removetime;
 
@@ -32,7 +33,15 @@ public class ExamdetailBean {
 	public void setExam_id(int exam_id) {
 		this.exam_id = exam_id;
 	}
+	
+	public int getStudent_id() {
+		return student_id;
+	}
 
+	public void setStudent_id(int student_id) {
+		this.student_id = student_id;
+	}
+	
 	public Date getCreatetime() {
 		return createtime;
 	}

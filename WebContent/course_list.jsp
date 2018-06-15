@@ -44,12 +44,12 @@
 					<td align="center"><%=course.getCourse_time()%></td>
 					<td>
 						<a href="CourseServlet?tab=modifycourse&courseid=<%= course.getCourse_id()%> "><input type="button" value="修改课程" class="btn"></a> 
-						<a href="CourseServlet?tab=deletecourse&courseid=<%= course.getCourse_id() %>"><input type="button" value="删除课程" class="btn"></a>
-						<a href="course_detail.jsp"><input type="button" value="课程详情" class="btn"></a> 
+						<a href="CourseServlet?tab=deletecourse&courseid=<%= course.getCourse_id()%>"><input type="button" value="删除课程" class="btn"></a>
+						<a href="CourseServlet?tab=exam&courseid=<%= course.getCourse_id()%>"><input type="button" value="课程详情" class="btn"></a> 
 					</td>	
 				</tr>
 				<%
-					}
+						}
 					}
 				%>
 			</tbody>

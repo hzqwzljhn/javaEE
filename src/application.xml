@@ -71,5 +71,10 @@
 	<bean id="studentDAO" class="cn.edu.zucc.ems.model.StudentDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	<bean id="examDAO" class="cn.edu.zucc.ems.model.ExamDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="examDetailDAO" class="cn.edu.zucc.ems.model.ExamDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>
