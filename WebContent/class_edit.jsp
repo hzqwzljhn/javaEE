@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style/backstage.css">
 </head>
 <body>
-<div class="title">修改教师信息</div>
+<div class="title">修改班级信息</div>
 <div class="details">
     <div class="details_operation clearfix">
         <!--方法地址-->
@@ -36,7 +36,5 @@
     </form>
 </div>
 </div>
-
-
 </body>
 </html>

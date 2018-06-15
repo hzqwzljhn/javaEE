@@ -10,13 +10,10 @@
 <link rel="stylesheet" href="style/backstage.css">
 </head>
 <body>
-	<div class="title">导入学生</div>
+	<div class="title">导入学生:<%=request.getAttribute("classname") %></div>
 	<div class="details">
 		<div class="details_operation clearfix">
-			<div class="bui_select">
-				<a href="ClassServlet?act=addclass"> <input type="button"
-					value="添加班级" class="btn"></a>
-			</div>
+			
 
 		</div>
 		<!--表格-->

@@ -1,7 +1,7 @@
 package cn.edu.zucc.ems.bean;
 
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 public class UserBean {
 	private String user_id;

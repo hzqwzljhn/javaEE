@@ -36,13 +36,13 @@
 							ClassBean classes = (ClassBean) objlist.get(i);
 				%>
         <tr>
-            <td><%= classes.getClass_id() %> </td>
-            <td><%= classes.getClass_name() %></td>
+            <td align="center"><%= classes.getClass_id() %> </td>
+            <td align="center"><%= classes.getClass_name() %></td>
             <td>
                 <a href="ClassServlet?act=modifyclass&classid=<%= classes.getClass_id()%>" ><input type="button" value="修改班级" class="btn"></a>
                 <a href="ClassServlet?act=deleteclass&classid=<%= classes.getClass_id()%>" ><input type="button" value="删除班级" class="btn"></a>
-                <a href="ClassServlet?act=importlist&classid=<%= classes.getClass_id()%>" ><input type="button" value="导入学生" class="btn"></a>
-                <a href="class_detail.jsp" ><input type="button" value="详情" class="btn"></a>
+                <a href="ClassServlet?act=importlist&classid=<%= classes.getClass_id()%>&classname=<%= classes.getClass_name() %>" ><input type="button" value="导入学生" class="btn"></a>
+                <a href="ClassServlet?act=classdetail&classid=<%= classes.getClass_id()%>&classname=<%= classes.getClass_name() %>" ><input type="button" value="详情" class="btn"></a>
             </td>
         </tr>
         <%	}
