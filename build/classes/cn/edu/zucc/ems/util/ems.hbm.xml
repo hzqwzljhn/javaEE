@@ -63,6 +63,7 @@
 			<column name="student_id" />
 			<generator class="assigned" />
 		</id>
+		<property name="class_id" type="java.lang.Integer" column="class_id"></property>
 		<property name="student_name" type="string" column="student_name" />
 		<property name="createtime" type="java.util.Date">
 			<column name="create_time" />

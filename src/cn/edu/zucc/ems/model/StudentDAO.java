@@ -21,6 +21,9 @@ public class StudentDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	/**查看所有学生
+	 * @return
+	 */
 	public Object listAllStudent(){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -30,6 +33,11 @@ public class StudentDAO {
 		return list;
 	}
 	
+	/**
+	 * 添加学生
+	 * @param studentid
+	 * @param studentname
+	 */
 	public void addStudent(Integer studentid, String studentname){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -40,6 +48,11 @@ public class StudentDAO {
 		session.saveOrUpdate(bean);
 	}
 	
+	/**
+	 * 修改学生信息
+	 * @param studentid
+	 * @param studentname
+	 */
 	public void modifyStudent(Integer studentid, String studentname){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -49,6 +62,11 @@ public class StudentDAO {
 		session.update(bean);
 	}
 	
+	/**
+	 * 获取学生信息
+	 * @param studentid
+	 * @return
+	 */
 	public StudentBean getStudent(Integer studentid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -59,11 +77,43 @@ public class StudentDAO {
 		return bean;
 	}
 	
+	/**
+	 * 删除学生
+	 * @param studentid
+	 */
 	public void deleteStudent(Integer studentid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
 		StudentBean bean = getStudent(studentid);
 		bean.setRemovetime(new Date());
 		session.update(bean);
+	}
+
+	/**
+	 * 导入学生
+	 * @param stuid
+	 * @param classid
+	 */
+	public void importstudent(Integer stuid, Integer classid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		StudentBean bean=getStudent(stuid);		
+		bean.setClass_id(classid);
+		session.update(bean);
+		
+	}
+
+	/**
+	 * 移除学生
+	 * @param stuid
+	 * @param classid
+	 */
+	public void exportStudent(Integer stuid, Integer classid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		StudentBean bean=getStudent(stuid);
+		bean.setClass_id(0);
+		session.update(bean);
+		
 	}
 }

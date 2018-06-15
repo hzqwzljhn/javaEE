@@ -9,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-
 import cn.edu.zucc.ems.bean.ClassBean;
+
 
 @Repository
 @Transactional
@@ -23,6 +22,10 @@ public class ClassDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
+	/**
+	 * 遍历所有班级
+	 * @return
+	 */
 	public Object listAllClass() {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -32,6 +35,11 @@ public class ClassDAO {
 	}
 
 
+	/**
+	 * 添加班级
+	 * @param classid
+	 * @param classname
+	 */
 	public void addClass(Integer classid, String classname) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -43,6 +51,11 @@ public class ClassDAO {
 		
 	}
 
+	/**
+	 * 修改班级
+	 * @param classid
+	 * @param classname
+	 */
 	public void modifyClass(Integer classid, String classname) {
 		this.setSessionFactory(sessionFactory);
 		Session session=sessionFactory.getCurrentSession();
@@ -53,6 +66,10 @@ public class ClassDAO {
 		session.update(bean);
 		
 	}
+	/**获取某班级信息
+	 * @param classid
+	 * @return
+	 */
 	public ClassBean getClasses(Integer classid) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -64,6 +81,10 @@ public class ClassDAO {
 		
 	}
 
+	/**
+	 * 删除班级
+	 * @param classid
+	 */
 	public void deleteClass(Integer classid) {
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
@@ -71,5 +92,27 @@ public class ClassDAO {
 		bean.setRemovetime(new Date());
 		session.update(bean);
 	}
-	
+
+	/**
+	 * 获取所有未导入的学生
+	 * @return
+	 */
+	public Object listNoclass() {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql="from StudentBean where removetime is null and class_id =0";
+		return session.createQuery(hql).list();
+	}
+
+	/**
+	 * 获取所有已导入的学生
+	 * @param classid
+	 * @return
+	 */
+	public Object listMyclass(String classid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql="from StudentBean where removetime is null and class_id ='"+classid+"'";
+		return session.createQuery(hql).list();
+	}
 }
