@@ -68,9 +68,6 @@
 		<property name="createtime" type="java.util.Date">
 			<column name="create_time" />
 		</property>
-		<property name="class_id" type="java.lang.Integer">
-			<column name="class_id" />
-		</property>
 		<property name="removetime" type="java.util.Date">	
 			<column name="remove_time" />
 		</property>
@@ -82,6 +79,25 @@
 		</id>
 		<property name="class_name" type="string" column="class_name" />
 		
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+	</class>
+	<class name="CheckDetailBean" table="check_detail">
+		<id name="check_detail_id" type="java.lang.Integer">
+			<column name="check_detail_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="check_id" type="java.lang.Integer" column="check_id" />
+		<property name="student_id" type="java.lang.Integer">
+			<column name="student_id" />
+		</property>
+		<property name="state" type="string">
+			<column name="state" />
+		</property>
 		<property name="createtime" type="timestamp">
 			<column name="create_time" />
 		</property>
@@ -162,17 +178,18 @@
 			<column name="create_time" />
 		</property>
 		<property name="coursetime" type="timestamp">
-			<column name="coursetime" />
+			<column name="course_time" />
 		</property>
 		<property name="checktime" type="timestamp">
-			<column name="checktime" />
+			<column name="check_time" />
 		</property>
 		<property name="removetime" type="timestamp">
 			<column name="remove_time" />
 		</property>
-		<property name="state" type="java.lang.Integer" column="state" />
+		<property name="state" type="string" column="state" />
 		<property name="course_id" type="java.lang.Integer" column="course_id" />
 		<property name="class_id" type="java.lang.Integer" column="class_id" />
+		<property name="check_id" type="java.lang.Integer" column="check_id" />
 		<property name="student_id" type="java.lang.Integer" column="student_id" />
 		<property name="user_id" type="string" column="user_id" />
 		<property name="course_name" type="string" column="course_name" />
@@ -200,7 +217,7 @@
 		<property name="student_id" type="java.lang.Integer" column="student_id" />
 		<property name="user_id" type="string" column="user_id" />
 		<property name="course_name" type="string" column="course_name" />
-		<property name="exam_name" type="string" column="course_name" />
+		<property name="exam_name" type="string" column="exam_name" />
 		<property name="class_name" type="string" column="class_name" />
 		<property name="student_name" type="string" column="student_name" />
 		<property name="user_name" type="string" column="user_name" />

@@ -40,30 +40,6 @@
 
 			if ("check".equals(tab)) {
 		%>
-		<table class="table" cellspacing="0" cellpadding="0">
-			<thead>
-				<tr>
-					<th width="20%">学生学号</th>
-					<th width="20%">学生姓名</th>
-					<th width="20%">班级</th>
-					<th>到课情况</th>
-
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${studentList}" var="student">
-					<tr align="center">
-						<td>${student.student_id }</td>
-						<td>${student.student_name }</td>
-						<td>${student.class_id }</td>
-						<td><input type="button" name="arrive" value="到课" class="btn" />
-							<input type="button" name="late" value="迟到" class="btn" /> <input
-							type="button" name="miss" value="缺课" class="btn" /></td>
-					</tr>
-				</c:forEach>
-
-			</tbody>
-		</table>
 
 		<%
 			} else if ("exam".equals(tab)) {
@@ -120,7 +96,7 @@
 		%>
 		<div class="details_operation clearfix">
 			<div class="bui_select" style="margin-right: 5px">
-				<a href="CheckServlet?tab=addcheck"> <input type="button" value="添加点名"
+				<a href="CheckServlet?tab=addcheck&courseid=<%=session.getAttribute("course_id")%>&classid=<%=session.getAttribute("class_id") %>"> <input type="button" value="添加点名"
 					class="btn"></a>
 			</div>
 		</div>
@@ -139,8 +115,73 @@
 						<td>${check.check_id }</td>
 						<td>${check.check_time }</td>
 						<td>
-							<a href="CheckServlet?tab=checkdetail"><input type="button" name="arrive" value="查看详细" class="btn" /></a> 
-							<a href="CheckServlet?tab=deletecheck"><input type="button" name="arrive" value="删除点名" class="btn" /></a> 
+							<a href="CheckServlet?tab=checkdetail&checkid=${check.check_id }&courseid=<%=session.getAttribute("course_id") %>"><input type="button" value="查看详细" class="btn" /></a> 
+							<a href="CheckServlet?tab=deletecheck&checkid=${check.check_id }&courseid=<%=session.getAttribute("course_id") %>"><input type="button" value="删除点名" class="btn" /></a> 
+						</td>
+					</tr>
+				</c:forEach>
+
+			</tbody>
+		</table>
+		
+		<%
+			} else if ("student".equals(tab)) {
+		%>
+		<table class="table" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th width="20%">学生学号</th>
+					<th width="20%">学生姓名</th>
+					<th width="20%">学生班级</th>
+					<th>操作</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${studentlist}" var="student">
+					<tr align="center" id="student">
+						<td>${student.student_id }</td>
+						<td>${student.student_name }</td>
+						<td>${student.class_id }</td>
+						<td>
+							<a href="CheckServlet?tab=checkin&classid=${student.class_id }&checkid=<%=session.getAttribute("check_id") %>&studentid=${student.student_id }&state=到课"><input type="button" name="arrive" value="到课" class="btn"/></a> 
+							<a href="CheckServlet?tab=checkin&classid=${student.class_id }&checkid=<%=session.getAttribute("check_id") %>&studentid=${student.student_id }&state=迟到"><input type="button" name="late" value="迟到" class="btn"/></a>
+							<a href="CheckServlet?tab=checkin&classid=${student.class_id }&checkid=<%=session.getAttribute("check_id") %>&studentid=${student.student_id }&state=缺课"><input type="button" name="miss" value="缺课" class="btn"/></a>  
+						</td>
+					</tr>
+				</c:forEach>
+
+			</tbody>
+		</table>
+		<%
+			} else if ("checkdetail".equals(tab)) {
+		%>
+		<table class="table" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th width="10%">学生学号</th>
+					<th width="10%">学生姓名</th>
+					<th width="10%">学生班级</th>
+					<th width="10%">课程名称</th>
+					<th width="15%">点名时间</th>
+					<th width="10%">到课情况</th>
+					<th>修改</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${checkdetail}" var="checkdetail">
+					<tr align="center" >
+						<td>${checkdetail.student_id }</td>
+						<td>${checkdetail.student_name }</td>
+						<td>${checkdetail.class_name }</td>
+						<td>${checkdetail.course_name }</td>
+						<td>${checkdetail.checktime }</td>
+						<td>${checkdetail.state }</td>
+						<td>
+							<a href="CheckServlet?tab=modifycheck&courseid=${checkdetail.course_id }&checkdetail_id=${checkdetail.check_detail_id }&checkid=${checkdetail.check_id }&state=到课"><input type="button" name="arrive" value="到课" class="btn" /></a> 
+							<a href="CheckServlet?tab=modifycheck&courseid=${checkdetail.course_id }&checkdetail_id=${checkdetail.check_detail_id }&checkid=${checkdetail.check_id }&state=迟到"><input type="button" name="late" value="迟到" class="btn" /></a> 
+							<a href="CheckServlet?tab=modifycheck&courseid=${checkdetail.course_id }&checkdetail_id=${checkdetail.check_detail_id }&checkid=${checkdetail.check_id }&state=缺课"><input type="button" name="miss" value="缺课" class="btn" /></a> 
 						</td>
 					</tr>
 				</c:forEach>
