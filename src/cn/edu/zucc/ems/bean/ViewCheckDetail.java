@@ -2,13 +2,13 @@ package cn.edu.zucc.ems.bean;
 
 import java.sql.Timestamp;
 
-public class VIewCheckDetail {
+public class ViewCheckDetail {
 	private int check_detail_id;
 	private Timestamp createtime;
 	private Timestamp coursetime;
 	private Timestamp checktime;
 	private Timestamp removetime;
-	private int state;
+	private String state;
 	private int course_id;
 	private int check_id;
 	private String course_name;
@@ -140,11 +140,11 @@ public class VIewCheckDetail {
 		this.type = type;
 	}
 
-	public int getState() {
+	public String getState() {
 		return state;
 	}
 
-	public void setState(int state) {
+	public void setState(String state) {
 		this.state = state;
 	}
 }

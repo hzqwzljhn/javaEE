@@ -1,13 +1,14 @@
 package cn.edu.zucc.ems.bean;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
-public class CheckdetailBean {
+public class CheckDetailBean {
 	private int check_detail_id;
 	private int check_id;
+	private int student_id;
 	private String state;
-	private Date createtime;
-	private Date removetime;
+	private Timestamp createtime;
+	private Timestamp removetime;
 
 	public int getCheck_detail_id() {
 		return check_detail_id;
@@ -33,20 +34,28 @@ public class CheckdetailBean {
 		this.state = state;
 	}
 
-	public Date getCreatetime() {
+	public Timestamp getCreatetime() {
 		return createtime;
 	}
 
-	public void setCreatetime(Date createtime) {
+	public void setCreatetime(Timestamp createtime) {
 		this.createtime = createtime;
 	}
 
-	public Date getRemovetime() {
+	public Timestamp getRemovetime() {
 		return removetime;
 	}
 
-	public void setRemovetime(Date removetime) {
+	public void setRemovetime(Timestamp removetime) {
 		this.removetime = removetime;
+	}
+
+	public int getStudent_id() {
+		return student_id;
+	}
+
+	public void setStudent_id(int student_id) {
+		this.student_id = student_id;
 	}
 
 }
