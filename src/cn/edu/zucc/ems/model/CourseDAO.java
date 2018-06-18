@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.zucc.ems.bean.CourseBean;
+import cn.edu.zucc.ems.bean.ViewCountBean;
 
 @Repository
 @Transactional
@@ -28,7 +29,6 @@ public class CourseDAO {
 		Session session = sessionFactory.getCurrentSession();
 		String hql="from CourseBean where user_id='"+userid+"' and removetime is null";
 		List<CourseBean> list=session.createQuery(hql).list();
-		//System.out.println(list.get(0).getCourse_name());
 		return list;
 	}
 	
@@ -73,5 +73,15 @@ public class CourseDAO {
 		bean.setRemovetime(new Date());
 		session.update(bean);
 	}
+
+	public Object listfinal(String courseid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql="from ViewCountBean where course_id="+courseid;
+		List<ViewCountBean> list=session.createQuery(hql).list();
+		return list;
+	}
+
+	
 	
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page import="cn.edu.zucc.ems.bean.ViewCountBean"%>
 <html>
 <head>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,7 +10,8 @@
     <link rel="stylesheet" href="style/backstage.css">
 </head>
 <body>
-<div class="title">班级详情</div>
+
+<div class="title">课程详情:<%= (String)session.getAttribute("coursename") %></div>
 <div class="details">
     <div class="details_operation clearfix">
         <div class="bui_select" style="margin-right:5px">
@@ -104,25 +106,23 @@
         </tr>
         </thead>
         <tbody>
-        <!--                //数据库写在下面-->
+       <%
+					List objlist = (List) request.getAttribute("listfinal");
+					if (objlist != null) {
+						for (int i = 0; i < objlist.size(); i++) {
+							ViewCountBean count = (ViewCountBean) objlist.get(i);
+				%>
         <tr>
-            <td>
-                <label>
-
-                </label>
+            <td><%=count.getStudent_id() %></td>
+            <td><%=count.getStudent_name() %>
             </td>
-            <td>
-
-            </td>
-            <td>
-
+            <td><%=count.getFinal_score() %>
             </td>
             <td>
                 <a href="#" ><input type="button" value="查看学生详情" class="btn"></a>
-                <a href="#" ><input type="button" value="移除学生" class="btn"></a>
-                
             </td>
         </tr>
+        <%}} %>
         </tbody>
     </table>
     	<%

@@ -71,8 +71,13 @@ public class CourseServlet extends HttpServlet {
 			result= "/course_detail.jsp";
 			request.getSession().setAttribute("tab",tab );
 		}else if ("final".equals(tab)) {
-			result= "/course_detail.jsp";
+			//result= "/course_detail.jsp";
+			result=listFinal(request);
 			request.getSession().setAttribute("tab",tab );
+		}else if("detail".equals(tab)) {
+			result="/course_detail.jsp";
+			request.getSession().setAttribute("courseid",request.getParameter("courseid"));
+			request.getSession().setAttribute("coursename",request.getParameter("coursename"));
 		}
 		else {
 			result=listCourse(request);
@@ -81,6 +86,13 @@ public class CourseServlet extends HttpServlet {
 		if (dispatcher != null)
 			dispatcher.forward(request, response);
 
+	}
+
+	private String listFinal(HttpServletRequest request) {
+		String courseid=(String) request.getSession().getAttribute("courseid");
+		System.out.println(courseid);
+		request.setAttribute("listfinal", this.dao.listfinal(courseid));
+		return "/course_detail.jsp";
 	}
 
 	/**
@@ -120,7 +132,7 @@ public class CourseServlet extends HttpServlet {
 		String coursename = request.getParameter("coursename");
 		String coursetime = request.getParameter("coursetime");
 		this.dao.modifyCourse(Integer.valueOf(courseid),coursename,coursetime);
-		request.setAttribute("objlist", this.dao.loadAllCourse(courseid));
+		request.setAttribute("objlist", this.dao.loadAllCourse(userid));
 		return "/course_list.jsp";
 	}
 	
@@ -158,6 +170,7 @@ public class CourseServlet extends HttpServlet {
 	 * @return
 	 */
 	private String addCourse(HttpServletRequest request){
+		
 		return "/course_add.jsp";
 	}
 }

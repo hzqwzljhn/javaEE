@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 
 public class VIewCheckDetail {
 	private int check_detail_id;
-	
 	private Timestamp createtime;
 	private Timestamp coursetime;
 	private Timestamp checktime;

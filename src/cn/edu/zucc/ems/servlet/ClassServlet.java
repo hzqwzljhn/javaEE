@@ -39,7 +39,8 @@ public class ClassServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
+		
+		request.setCharacterEncoding("UTF-8");
 		String act= request.getParameter("act");
 		String result = "";
 		if("addclass".equals(act)) {
@@ -58,6 +59,8 @@ public class ClassServlet extends HttpServlet {
 			result=importstudent(request);
 		}else if ("exportstu".equals(act)) {
 			result=expportStudent(request);
+		}else if("classdetail".equals(act)){
+			result=classDetail(request);
 		}
 		else {
 			result=listClass(request);
@@ -67,6 +70,14 @@ public class ClassServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 	}
 
+	private String classDetail(HttpServletRequest request) {
+		String classid = request.getParameter("classid");
+		String classname = request.getParameter("classname");
+		request.setAttribute("objlist2", this.dao.listMyclass(classid));
+		request.setAttribute("classname", classname);
+		return "/class_detail.jsp";
+	}
+
 	/**移除学生
 	 * @param request
 	 * @return
@@ -74,6 +85,7 @@ public class ClassServlet extends HttpServlet {
 	private String expportStudent(HttpServletRequest request) {
 		String stuid=request.getParameter("stuid");
 		String classid = request.getParameter("classid");
+		
 		this.dao1.exportStudent(Integer.valueOf(stuid),Integer.valueOf(classid));
 		request.setAttribute("classid", classid);
 		request.setAttribute("objlist1", this.dao.listNoclass());
@@ -104,7 +116,9 @@ public class ClassServlet extends HttpServlet {
 	 */
 	private String importstu(HttpServletRequest request) {
 		String classid = request.getParameter("classid");
+		String classname = request.getParameter("classname");
 		request.setAttribute("classid", classid);
+		request.setAttribute("classname", classname);
 		request.setAttribute("objlist1", this.dao.listNoclass());
 		request.setAttribute("objlist2", this.dao.listMyclass(classid));
 		return "/import_stu.jsp";
