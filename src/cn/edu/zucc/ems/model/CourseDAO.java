@@ -73,15 +73,4 @@ public class CourseDAO {
 		bean.setRemovetime(new Date());
 		session.update(bean);
 	}
-
-	public Object listfinal(String courseid) {
-		this.setSessionFactory(sessionFactory);
-		Session session = sessionFactory.getCurrentSession();
-		String hql="from ViewCountBean where course_id="+courseid;
-		List<ViewCountBean> list=session.createQuery(hql).list();
-		return list;
-	}
-
-	
-	
 }

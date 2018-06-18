@@ -42,6 +42,7 @@ public class CourseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String tab = request.getParameter("tab");
+		
 		String result = "";
 		if("addcourse".equals(tab)){
 			result = addCourse(request);
@@ -72,10 +73,6 @@ public class CourseServlet extends HttpServlet {
 		} else if ("exam".equals(tab)) {
 			result= "/course_detail.jsp";
 			request.getSession().setAttribute("tab",tab );
-		}else if ("final".equals(tab)) {
-			//result= "/course_detail.jsp";
-			result=listFinal(request);
-			request.getSession().setAttribute("tab",tab );
 		}else if("detail".equals(tab)) {
 			result="/course_detail.jsp";
 			request.getSession().setAttribute("courseid",request.getParameter("courseid"));
@@ -88,13 +85,6 @@ public class CourseServlet extends HttpServlet {
 		if (dispatcher != null)
 			dispatcher.forward(request, response);
 
-	}
-
-	private String listFinal(HttpServletRequest request) {
-		String courseid=(String) request.getSession().getAttribute("courseid");
-		System.out.println(courseid);
-		request.setAttribute("listfinal", this.dao.listfinal(courseid));
-		return "/course_detail.jsp";
 	}
 
 	/**

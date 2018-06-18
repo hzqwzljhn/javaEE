@@ -13,6 +13,7 @@ import cn.edu.zucc.ems.bean.CheckBean;
 import cn.edu.zucc.ems.bean.CheckDetailBean;
 import cn.edu.zucc.ems.bean.StudentBean;
 import cn.edu.zucc.ems.bean.ViewCheckDetail;
+import cn.edu.zucc.ems.bean.ViewCountBean;
 
 @Repository
 @Transactional
@@ -98,4 +99,14 @@ public class CheckDAO {
 		query.executeUpdate();
 		
 	}
+
+	public Object listFinal(Integer courseid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql="from ViewCountBean where course_id="+courseid;
+		List<ViewCountBean> list=session.createQuery(hql).list();
+		return list;
+	}
+
+	
 }

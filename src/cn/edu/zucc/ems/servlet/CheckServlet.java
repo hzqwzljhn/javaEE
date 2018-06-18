@@ -64,11 +64,20 @@ public class CheckServlet extends HttpServlet {
 			result = this.addCheckDetail(request);
 		} else if (request.getParameter("tab").equals("modifycheck")) {
 			result = this.modifyCheckDetail(request);
+		} else if (request.getParameter("tab").equals("final")) {
+			System.out.println("final");
+			result = this.listFinal(request);
 		}
 
 		RequestDispatcher dispatcher = request.getSession().getServletContext().getRequestDispatcher(result);
 		if (dispatcher != null)
 			dispatcher.forward(request, response);
+	}
+	private String listFinal(HttpServletRequest request) {
+		String courseid=request.getParameter("courseid");
+		request.setAttribute("listfinal", this.dao.listFinal(Integer.valueOf(courseid)));
+		request.getSession().setAttribute("tab", "final");
+		return "/course_detail.jsp";
 	}
 
 	private String readCheck(HttpServletRequest request) {
@@ -76,7 +85,7 @@ public class CheckServlet extends HttpServlet {
 		int courseid = Integer.parseInt(string);
 		String string2 = request.getParameter("classid");
 		int classid = Integer.parseInt(string2);
-
+		
 		request.getSession().setAttribute("tab", "check");
 		request.getSession().setAttribute("course_id", courseid);
 		request.getSession().setAttribute("class_id", classid);
