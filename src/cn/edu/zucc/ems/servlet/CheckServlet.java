@@ -124,6 +124,7 @@ public class CheckServlet extends HttpServlet {
 		int checkid = Integer.parseInt(string2);
 
 		this.dao.deleteCheck(checkid);
+		this.dao.deleteCheckDetail(checkid);
 		List<CheckBean> list = this.dao.loadAllCheckList(courseid);
 
 		request.setAttribute("checklist", list);

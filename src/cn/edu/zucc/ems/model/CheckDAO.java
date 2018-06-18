@@ -61,6 +61,15 @@ public class CheckDAO {
 		
 	}
 	
+	public void deleteCheckDetail(int checkid){
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		org.hibernate.query.Query query = session.createQuery("update CheckDetailBean set removetime = '" + time + "' where check_id = " + checkid);
+		query.executeUpdate();
+		
+	}
+	
 	public List<ViewCheckDetail> readCheckDetail(int courseid, int checkid){
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
