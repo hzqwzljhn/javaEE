@@ -145,6 +145,7 @@
 		<property name="user_name" type="string" column="user_name" />
 		<property name="type" type="string" column="type" />	
 	</class>
+<<<<<<< HEAD
 	<class name="CheckDetailBean" table="check_detail">
 		<id name="check_detail_id" type="java.lang.Integer">
 			<column name="check_detail_id" />
@@ -167,6 +168,11 @@
 	<class name="CheckBean" table="checks">
 		<id name="check_id" type="java.lang.Integer">
 			<column name="check_id" />
+=======
+	<!--<class name="ViewCheckDetail" table="view_check_detail">
+		<id name="check_detail_id" type="java.lang.Integer">
+			<column name="check_detail_id" />
+>>>>>>> 637cf585a4e79dcd114705f20bf0224a13b17a69
 			<generator class="assigned" />
 		</id>
 		<property name="check_time" type="timestamp" column="check_time" />
@@ -177,6 +183,7 @@
 		<property name="createtime" type="timestamp">
 			<column name="create_time" />
 		</property>
+<<<<<<< HEAD
 		<property name="removetime" type="timestamp">
 			<column name="remove_time" />
 		</property>
@@ -190,12 +197,35 @@
 		<property name="course_id" type="java.lang.Integer" column="course_id" />
 		<property name="createtime" type="timestamp">
 			<column name="create_time" />
+=======
+		<property name="coursetime" type="timestamp">
+			<column name="course_time" />
+		</property>
+		<property name="checktime" type="timestamp">
+			<column name="check_time" />
+>>>>>>> 637cf585a4e79dcd114705f20bf0224a13b17a69
 		</property>
 		<property name="removetime" type="timestamp">
 			<column name="remove_time" />
 		</property>
+<<<<<<< HEAD
 	</class>
 	<class name="ExamdetailBean" table="exam_detail">
+=======
+		<property name="state" type="string" column="state" />
+		<property name="course_id" type="java.lang.Integer" column="course_id" />
+		<property name="class_id" type="java.lang.Integer" column="class_id" />
+		<property name="check_id" type="java.lang.Integer" column="check_id" />
+		<property name="student_id" type="java.lang.Integer" column="student_id" />
+		<property name="user_id" type="string" column="user_id" />
+		<property name="course_name" type="string" column="course_name" />
+		<property name="class_name" type="string" column="class_name" />
+		<property name="student_name" type="string" column="student_name" />
+		<property name="user_name" type="string" column="user_name" />
+		<property name="type" type="string" column="type" />	
+	</class>
+	 <class name="ViewExamDetailBean" table="view_exam_detail">
+>>>>>>> 637cf585a4e79dcd114705f20bf0224a13b17a69
 		<id name="exam_detail_id" type="java.lang.Integer">
 			<column name="exam_detail_id" />
 			<generator class="assigned" />
@@ -235,9 +265,17 @@
 		<property name="student_id" type="java.lang.Integer" column="student_id" />
 		<property name="user_id" type="string" column="user_id" />
 		<property name="course_name" type="string" column="course_name" />
+<<<<<<< HEAD
+=======
+		<property name="exam_name" type="string" column="exam_name" />
+>>>>>>> 637cf585a4e79dcd114705f20bf0224a13b17a69
 		<property name="class_name" type="string" column="class_name" />
 		<property name="student_name" type="string" column="student_name" />
 		<property name="user_name" type="string" column="user_name" />
 		<property name="type" type="string" column="type" />	
+<<<<<<< HEAD
 	</class>
+=======
+	</class> -->
+>>>>>>> 637cf585a4e79dcd114705f20bf0224a13b17a69
 </hibernate-mapping>  
