@@ -86,5 +86,104 @@
 			<column name="remove_time" />
 		</property>
 	</class>
-
+	<class name="ViewCountBean" table="view_count">
+		<id name="count_id" type="java.lang.Integer">
+			<column name="count_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="final_score" type="java.lang.Integer" column="final_score" />
+		
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+		<property name="course_id" type="java.lang.Integer" column="course_id" />
+		<property name="class_id" type="java.lang.Integer" column="class_id" />
+		<property name="student_id" type="java.lang.Integer" column="student_id" />
+		<property name="user_id" type="java.lang.Integer" column="user_id" />
+		<property name="course_name" type="string" column="course_name" />
+		<property name="class_name" type="string" column="class_name" />
+		<property name="student_name" type="string" column="student_name" />
+		<property name="user_name" type="string" column="user_name" />
+		<property name="type" type="string" column="type" />	
+	</class>
+	<class name="ViewCountBean" table="view_count">
+		<id name="count_id" type="java.lang.Integer">
+			<column name="count_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="final_score" type="java.lang.Integer" column="final_score" />
+		
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+		<property name="course_id" type="java.lang.Integer" column="course_id" />
+		<property name="class_id" type="java.lang.Integer" column="class_id" />
+		<property name="student_id" type="java.lang.Integer" column="student_id" />
+		<property name="user_id" type="string" column="user_id" />
+		<property name="course_name" type="string" column="course_name" />
+		<property name="class_name" type="string" column="class_name" />
+		<property name="student_name" type="string" column="student_name" />
+		<property name="user_name" type="string" column="user_name" />
+		<property name="type" type="string" column="type" />	
+	</class>
+	<class name="ViewCheckDetail" table="view_check_detail">
+		<id name="check_detail_id" type="java.lang.Integer">
+			<column name="check_detail_id" />
+			<generator class="assigned" />
+		</id>
+		
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="coursetime" type="timestamp">
+			<column name="coursetime" />
+		</property>
+		<property name="checktime" type="timestamp">
+			<column name="checktime" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+		<property name="state" type="java.lang.Integer" column="state" />
+		<property name="course_id" type="java.lang.Integer" column="course_id" />
+		<property name="class_id" type="java.lang.Integer" column="class_id" />
+		<property name="student_id" type="java.lang.Integer" column="student_id" />
+		<property name="user_id" type="string" column="user_id" />
+		<property name="course_name" type="string" column="course_name" />
+		<property name="class_name" type="string" column="class_name" />
+		<property name="student_name" type="string" column="student_name" />
+		<property name="user_name" type="string" column="user_name" />
+		<property name="type" type="string" column="type" />	
+	</class>
+	<class name="ViewExamDetailBean" table="view_exam_detail">
+		<id name="exam_detail_id" type="java.lang.Integer">
+			<column name="exam_detail_id" />
+			<generator class="assigned" />
+		</id>
+		
+		<property name="createtime" type="timestamp">
+			<column name="create_time" />
+		</property>
+		<property name="removetime" type="timestamp">
+			<column name="remove_time" />
+		</property>
+		<property name="score" type="java.lang.Integer" column="score" />
+		<property name="exam_id" type="java.lang.Integer" column="exam_id" />
+		<property name="course_id" type="java.lang.Integer" column="course_id" />
+		<property name="class_id" type="java.lang.Integer" column="class_id" />
+		<property name="student_id" type="java.lang.Integer" column="student_id" />
+		<property name="user_id" type="string" column="user_id" />
+		<property name="course_name" type="string" column="course_name" />
+		<property name="exam_name" type="string" column="course_name" />
+		<property name="class_name" type="string" column="class_name" />
+		<property name="student_name" type="string" column="student_name" />
+		<property name="user_name" type="string" column="user_name" />
+		<property name="type" type="string" column="type" />	
+	</class>
 </hibernate-mapping>  
