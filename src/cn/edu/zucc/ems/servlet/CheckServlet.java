@@ -182,6 +182,7 @@ public class CheckServlet extends HttpServlet {
 	private String deleteExam(HttpServletRequest request) {
 		String examid = request.getParameter("examid");
 		this.dao.deleteExam(Integer.valueOf(examid));
+		this.dao.deleteExamDetailByexamid(Integer.valueOf(examid));
 		String courseid = request.getParameter("courseid");
 		request.setAttribute("objlist", this.dao.loadAllExam(Integer.valueOf(courseid)));
 		return "/course_detail.jsp";

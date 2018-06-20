@@ -405,4 +405,28 @@ public class CheckDAO {
 		countBean.setFinal_score(score);
 		session.update(countBean);
 	}
+
+	public void deleteExamDetailByexamid(Integer examid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql="from ExamdetailBean where exam_id="+examid;
+		List<ExamdetailBean> list =session.createQuery(hql).list();
+		for(int i=0;i<list.size();i++) {
+			ExamdetailBean bean=list.get(i);
+			bean.setRemovetime(new Date());
+			session.update(bean);
+		}
+	}
+	public void deleteCount(int courseid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql="from CountBean where course_id="+courseid;
+		List<CountBean> list=session.createQuery(hql).list();
+		for(int i=0;i<list.size();i++) {
+			CountBean bean=list.get(i);
+			bean.setRemovetime(new Date());
+			session.update(bean);
+		}
+	}
+	
 }

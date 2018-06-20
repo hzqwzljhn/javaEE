@@ -1,6 +1,5 @@
 package cn.edu.zucc.ems.model;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.edu.zucc.ems.bean.CountBean;
 import cn.edu.zucc.ems.bean.CourseBean;
 import cn.edu.zucc.ems.bean.StudentBean;
-import cn.edu.zucc.ems.bean.ViewCountBean;
+import cn.edu.zucc.ems.bean.ViewCheckDetail;
+import cn.edu.zucc.ems.bean.ViewExamDetailBean;
 
 @Repository
 @Transactional

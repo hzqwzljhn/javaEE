@@ -108,6 +108,7 @@ public class CourseServlet extends HttpServlet {
 	private String deleteCourse(HttpServletRequest request){
 		String userid=(String) request.getSession().getAttribute("userid");
 		String courseid = request.getParameter("courseid");
+		
 		this.dao.deleteCourse(Integer.valueOf(courseid));
 		request.setAttribute("objlist", this.dao.loadAllCourse(userid));
 		return "/course_list.jsp";
