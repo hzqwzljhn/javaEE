@@ -1,5 +1,6 @@
 package cn.edu.zucc.ems.model;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.edu.zucc.ems.bean.CountBean;
 import cn.edu.zucc.ems.bean.CourseBean;
+import cn.edu.zucc.ems.bean.StudentBean;
 import cn.edu.zucc.ems.bean.ViewCountBean;
 
 @Repository
@@ -32,19 +35,38 @@ public class CourseDAO {
 		return list;
 	}
 	
-	public void addCourse(Integer courseid, String coursename, String coursetime,String userid) throws ParseException{
+	public void addCourse(Integer courseid, String coursename, Integer classid, String coursetime,String userid) throws ParseException{
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();
 		CourseBean bean = new CourseBean();
 		bean.setUser_id(userid);
 		bean.setCourse_id(courseid);
+		bean.setClass_id(classid);
 		bean.setCourse_name(coursename);
-		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(coursetime);
+		Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(coursetime);
 		bean.setCourse_time(date); 
 		bean.setCreatetime(new Date());
 		session.saveOrUpdate(bean);
+		List<StudentBean> sBeans=(List<StudentBean>) getStudentByClassid(classid);
+		for(int i=0;i<sBeans.size();i++) {
+			CountBean cBean=new CountBean();
+			cBean.setCourse_id(courseid);
+			cBean.setFinal_score(0);
+			cBean.setStudent_id(sBeans.get(i).getStudent_id());
+			cBean.setCreatetime(  new Date());
+			session.saveOrUpdate(cBean);
+			session.flush();
+			session.clear();
+		}
 	}
-	
+	public Object getStudentByClassid(Integer classid) {
+		this.setSessionFactory(sessionFactory);
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from StudentBean where class_id = '" + classid + "' and removetime is null";
+		List<StudentBean> list = session.createQuery(hql).list();
+		System.out.println(list.get(0).getStudent_name());
+		return list;
+	}
 	public void modifyCourse(Integer courseid, String coursename, String coursetime) throws ParseException{
 		this.setSessionFactory(sessionFactory);
 		Session session = sessionFactory.getCurrentSession();

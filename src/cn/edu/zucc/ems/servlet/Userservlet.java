@@ -4,9 +4,11 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import cn.edu.zucc.ems.bean.UserBean;
 import cn.edu.zucc.ems.model.UserDAO;
@@ -47,7 +49,7 @@ public class Userservlet extends HttpServlet {
 		String method = request.getParameter("method");
 		String result = "";
 		if (method.equals("logincheck")) {
-				result = this.logincheck(request);
+				result = this.logincheck(request,response);
 		} else if (method.equals("logout")) {
 				result=this.logout(request);
 		} else {
@@ -73,9 +75,10 @@ public class Userservlet extends HttpServlet {
 	/**
 	 * 登录接口
 	 * @param request
+	 * @param response 
 	 * @return
 	 */
-	private String logincheck(HttpServletRequest request)  {
+	private String logincheck(HttpServletRequest request, HttpServletResponse response)  {
 		try {
 			String userid = request.getParameter("userid");
 			
@@ -96,11 +99,16 @@ public class Userservlet extends HttpServlet {
 			if ("管理员".equals(userBean.getType())) {
 				request.getSession().setAttribute("userid",userid );
 				request.getSession().setAttribute("password",password );
+				 Cookie cookie = new Cookie("userid",userid);
+				 cookie.setMaxAge(60*60*24);
+				 response.addCookie(cookie);
 				return "/manager.jsp";
 			} else {
-				System.out.println("teacher");
 				request.getSession().setAttribute("userid",userid );
 				request.getSession().setAttribute("password",password );
+				Cookie cookie = new Cookie("userid",userid);
+				 cookie.setMaxAge(60*60*24);
+				 response.addCookie(cookie);
 				return "/teacher.jsp";
 			}
 		} catch (Exception e) {

@@ -82,5 +82,5 @@
 	<bean id="checkDAO" class="cn.edu.zucc.ems.model.CheckDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	
 </beans>

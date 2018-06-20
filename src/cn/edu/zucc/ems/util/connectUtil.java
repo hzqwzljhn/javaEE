@@ -12,22 +12,28 @@ import cn.edu.zucc.ems.model.UserDAO;
 
 public class connectUtil {
 	ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
+
 	public UserDAO getUserConnect() {
 		return (UserDAO) this.context.getBean("userDAO");
 	}
+
 	public CourseDAO getCourseConnect() {
 		return (CourseDAO) this.context.getBean("courseDAO");
 	}
+
 	public ClassDAO getClassConnect() {
-		return (ClassDAO)this.context.getBean("classDAO");
+		return (ClassDAO) this.context.getBean("classDAO");
 	}
+
 	public StudentDAO getStudentConnect() {
 		return (StudentDAO) this.context.getBean("studentDAO");
 
 	}
+
 	public CheckDAO getCheckConnect() {
 		return (CheckDAO) this.context.getBean("checkDAO");
 
 	}
+
 }
 

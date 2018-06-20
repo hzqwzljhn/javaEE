@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.edu.zucc.ems.bean.StudentBean;
+import cn.edu.zucc.ems.model.ClassDAO;
 import cn.edu.zucc.ems.model.CourseDAO;
 import cn.edu.zucc.ems.util.connectUtil;
 
@@ -20,6 +21,7 @@ import cn.edu.zucc.ems.util.connectUtil;
 public class CourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     CourseDAO dao=new connectUtil().getCourseConnect();
+    ClassDAO classdao=new connectUtil().getClassConnect();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -151,7 +153,8 @@ public class CourseServlet extends HttpServlet {
 		String courseid = request.getParameter("courseid");
 		String coursename = request.getParameter("coursename");
 		String coursetime = request.getParameter("coursetime");
-		this.dao.addCourse(Integer.valueOf(courseid),coursename,coursetime,userid);
+		String classid = request.getParameter("classid");
+		this.dao.addCourse(Integer.valueOf(courseid),coursename,Integer.valueOf(classid),coursetime,userid);
 		request.setAttribute("objlist", this.dao.loadAllCourse(userid));
 		return "/course_list.jsp";
 	}
@@ -162,7 +165,7 @@ public class CourseServlet extends HttpServlet {
 	 * @return
 	 */
 	private String addCourse(HttpServletRequest request){
-		
+		request.setAttribute("objlist", this.classdao.listAllClass());
 		return "/course_add.jsp";
 	}
 }

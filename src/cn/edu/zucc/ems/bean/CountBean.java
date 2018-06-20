@@ -6,6 +6,7 @@ public class CountBean {
 	private int count_id;
 	private int final_score;
 	private int course_id;
+	private int student_id;
 	private Date createtime;
 	private Date removetime;
 
@@ -37,8 +38,8 @@ public class CountBean {
 		return createtime;
 	}
 
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
+	public void setCreatetime(Date date) {
+		this.createtime = date;
 	}
 
 	public Date getRemovetime() {
@@ -47,5 +48,13 @@ public class CountBean {
 
 	public void setRemovetime(Date removetime) {
 		this.removetime = removetime;
+	}
+
+	public int getStudent_id() {
+		return student_id;
+	}
+
+	public void setStudent_id(int student_id) {
+		this.student_id = student_id;
 	}
 }

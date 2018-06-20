@@ -5,6 +5,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>平时成绩管理系统</title>
+    <link rel="stylesheet" href="style/backstage.css">
+</head>
+<body>
 <div class="title">修改教师信息</div>
 <div class="details">
     <div class="details_operation clearfix">
@@ -28,6 +32,10 @@
             <tr>
                 <td align="center" width="25%">课程时间</td>
                 <td><input type="text" name="coursetime" value='<%=bean.getCourse_time()%>'></td>
+            </tr>
+            <tr>
+                <td align="center" width="25%">班级编号</td>
+                <td><input type="text" name="coursetime" value='<%=bean.getClass_id()%>'></td>
             </tr>
         </table>
         <br />
