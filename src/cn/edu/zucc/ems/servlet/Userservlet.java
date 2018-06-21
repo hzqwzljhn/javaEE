@@ -1,6 +1,7 @@
 package cn.edu.zucc.ems.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import cn.edu.zucc.ems.bean.UserBean;
 import cn.edu.zucc.ems.model.UserDAO;
@@ -47,17 +49,14 @@ public class Userservlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("gbk");
 		String method = request.getParameter("method");
-		String result = "";
+		
 		if (method.equals("logincheck")) {
-				result = this.logincheck(request,response);
+				 this.logincheck(request,response);
 		} else if (method.equals("logout")) {
-				result=this.logout(request);
+				this.logout(request, response);
 		} else {
 			System.out.println("no");
 		}
-		RequestDispatcher dispatcher = request.getSession().getServletContext().getRequestDispatcher(result);
-		if (dispatcher != null)
-			dispatcher.forward(request, response);
 
 	}
 
@@ -65,20 +64,24 @@ public class Userservlet extends HttpServlet {
 	 * 退出
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	private String logout(HttpServletRequest request) {
+	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.getSession().removeAttribute("userid");
-		request.getSession().getAttribute("password");
-		return "/login.jsp";
+		PrintWriter out = response.getWriter();
+		out.println("111");
+		out.flush();
+		out.close();
 	}
 
 	/**
 	 * 登录接口
 	 * @param request
 	 * @param response 
-	 * @return
+	 * @throws IOException 
 	 */
-	private String logincheck(HttpServletRequest request, HttpServletResponse response)  {
+	private void logincheck(HttpServletRequest request, HttpServletResponse response) throws IOException  {
+		 PrintWriter out = response.getWriter();
 		try {
 			String userid = request.getParameter("userid");
 			
@@ -95,6 +98,7 @@ public class Userservlet extends HttpServlet {
 			if (!password.equals(userBean.getPassword())) {
 				throw new Exception("密码错误");
 			}
+			
 			request.getSession().setAttribute("username", userBean.getUser_name());
 			if ("管理员".equals(userBean.getType())) {
 				request.getSession().setAttribute("userid",userid );
@@ -102,19 +106,25 @@ public class Userservlet extends HttpServlet {
 				 Cookie cookie = new Cookie("userid",userid);
 				 cookie.setMaxAge(60*60*24);
 				 response.addCookie(cookie);
-				return "/manager.jsp";
+				 out.println("12");
+				 
 			} else {
 				request.getSession().setAttribute("userid",userid );
 				request.getSession().setAttribute("password",password );
+				out.println("11");
 				Cookie cookie = new Cookie("userid",userid);
 				 cookie.setMaxAge(60*60*24);
 				 response.addCookie(cookie);
-				return "/teacher.jsp";
 			}
+			
 		} catch (Exception e) {
 			request.getSession().setAttribute("errormsg", e.getMessage());
-			return "/login.jsp";
+			out.print("13");
+			 out.flush();
+			 out.close();
 		}
+		out.flush();
+		 out.close();
 
 	}
 

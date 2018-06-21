@@ -11,21 +11,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-		<% String name = (String) session.getAttribute("userid");
-	if (name == null||!"admin".equals(name)) {
-		%>
-		<script type="text/javascript">
-		alert("您还没有登录，请登录...");
-		window.location.href="login.jsp";
-		</script>
-		<% 
 		
+<script type="text/javascript">
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)"); 
+　　 return (arr=document.cookie.match(reg))?unescape(arr[2]):null;
+}
+function delCookie(name) 
+{ 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() - 1); 
+    var cval=getCookie(name); 
+    if(cval!=null) 
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+}
+function chenkuserid(){
+	id=getCookie("userid");
+	console.log(id)
+	if(id==null||id=="")
+	{
+		alert("您还没有登录，请登录...");
+	window.location.href="login.jsp";
+	}
+}
+
+var xmlhttp;
+if (window.XMLHttpRequest)
+{
+    xmlhttp=new XMLHttpRequest();
+}
+else
+{
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");    
+}
+function check(){
+
+
+var aaa="method=logout";
+
+xmlhttp.open("GET","/bigwork/Userservlet?"+aaa,true);
+xmlhttp.onreadystatechange=function()
+{
+	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	{	
+		if(xmlhttp.responseText==111){
+			alert("退出成功")
+			delCookie("userid");
+			window.location.href="login.jsp";
+		}
 		
 	}
-	
-%>
+};
+xmlhttp.send();
+
+}
+
+</script>
 </head>
-<body>
+<body onload='chenkuserid()'>
 	<div class="head">
 		<div class="logo fl">
 			<a href="#"></a>
@@ -36,7 +80,7 @@
 
 		<div class="link fr">
 			<a href="manager.jsp" target="_parent" class="icon icon_i">首页</a><span></span><a
-				href="Userservlet?method=logout" target="_parent"
+				href="" target="_parent" onclick="check()"
 				class="icon icon_e">退出</a>
 		</div>
 	</div>
