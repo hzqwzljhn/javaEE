@@ -80,7 +80,7 @@ public class TeacherServlet extends HttpServlet {
 			return "/error.jsp";
 		} else {
 			UserBean test = this.dao.addTeacher(userid, username);
-			System.out.println(test.getUser_id() + " " + test.getUser_name() + " " + test.getType());
+			request.setAttribute("userList", this.dao.loadAllTeacher());
 			return "/teacher_list.jsp";
 		}
 	}
